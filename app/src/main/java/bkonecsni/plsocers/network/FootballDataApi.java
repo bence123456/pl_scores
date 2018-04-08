@@ -8,4 +8,7 @@ public interface FootballDataApi {
 
     @GET("/competitions/445/fixtures")
     Call<Object> listFixtures(@Query("matchday") int matchday);
+
+    @GET("/competitions/445/leagueTable")
+    Call<Object> getTLeagueTable();
 }
