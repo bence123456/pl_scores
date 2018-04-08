@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import javax.inject.Inject;
 
+import bkonecsni.plsocers.db.DbConstants;
+
 public class LiveMatchesActivity extends AppCompatActivity implements LiveMatchesScreen {
 
     @Inject
@@ -13,4 +15,10 @@ public class LiveMatchesActivity extends AppCompatActivity implements LiveMatche
     public void showLiveMatches() {
         liveMatchesPresenter.refreshMatches();
     }
+
+    @Override
+    public void addMatchToFavourites(DbConstants.FavouriteMatch favouriteMatch) {
+        liveMatchesPresenter.addFavouriteMatch(favouriteMatch);
+    }
+
 }
