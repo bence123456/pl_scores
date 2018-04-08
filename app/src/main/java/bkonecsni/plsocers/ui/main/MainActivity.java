@@ -10,7 +10,7 @@ import bkonecsni.plsocers.R;
 public class MainActivity extends AppCompatActivity implements MainScreen {
 
     @Inject
-    private MainPresenter mainPresenter;
+    MainPresenter mainPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
