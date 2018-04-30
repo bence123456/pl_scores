@@ -1,10 +1,10 @@
 package bkonecsni.plsocers.ui.livematches;
 
-import bkonecsni.plsocers.db.DbConstants;
+import bkonecsni.plsocers.model.db.FavouriteMatch;
 
 public interface LiveMatchesScreen {
 
     void showLiveMatches();
 
-    void addMatchToFavourites(DbConstants.FavouriteMatch favouriteMatch);
+    void addMatchToFavourites(FavouriteMatch favouriteMatch);
 }

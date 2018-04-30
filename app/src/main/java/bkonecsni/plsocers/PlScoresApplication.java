@@ -1,10 +1,10 @@
 package bkonecsni.plsocers;
 
-import android.app.Application;
+import com.orm.SugarApp;
 
 import bkonecsni.plsocers.ui.UIModule;
 
-public class PlScoresApplication extends Application {
+public class PlScoresApplication extends SugarApp {
 
     public static PlScoresApplicationComponent injector;
 

@@ -1,25 +1,27 @@
 package bkonecsni.plsocers.interactor.favouritematches;
 
-import javax.inject.Inject;
+import java.util.List;
 
-import bkonecsni.plsocers.db.DbConstants;
-import bkonecsni.plsocers.db.FavouriteMatchesDbLoader;
+import bkonecsni.plsocers.PlScoresApplication;
+import bkonecsni.plsocers.model.db.FavouriteMatch;
 
 public class FavouriteMatchesInteractor {
 
-    @Inject
-    FavouriteMatchesDbLoader favouriteMatchesDbLoader;
-
-    public void getFavouriteMatches() {
-        favouriteMatchesDbLoader.fetchAll();
+    public FavouriteMatchesInteractor() {
+        PlScoresApplication.injector.inject(this);
     }
 
-    public void createFavouriteMatch(DbConstants.FavouriteMatch favouriteMatch) {
-        favouriteMatchesDbLoader.createFavouriteMatch(favouriteMatch);
+    public List<FavouriteMatch> getFavouriteMatches() {
+        return (List<FavouriteMatch>) FavouriteMatch.findAll(FavouriteMatch.class);
     }
 
-    public void deleteFavouriteMatch(long rowId) {
-        favouriteMatchesDbLoader.deleteFavouriteMatch(rowId);
+    public void createFavouriteMatch(FavouriteMatch favouriteMatch) {
+        favouriteMatch.save();
+    }
+
+    public void deleteFavouriteMatch(long id) {
+        FavouriteMatch favouriteMatch = FavouriteMatch.findById(FavouriteMatch.class, id);
+        favouriteMatch.delete();
     }
 
 }

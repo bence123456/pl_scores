@@ -2,7 +2,6 @@ package bkonecsni.plsocers;
 
 import javax.inject.Singleton;
 
-import bkonecsni.plsocers.db.DbModule;
 import bkonecsni.plsocers.interactor.InteractorModule;
 import bkonecsni.plsocers.interactor.favouritematches.FavouriteMatchesInteractor;
 import bkonecsni.plsocers.interactor.livematches.LiveMatchesInteractor;
@@ -20,7 +19,7 @@ import bkonecsni.plsocers.ui.main.MainPresenter;
 import dagger.Component;
 
 @Singleton
-@Component(modules = {UIModule.class, NetworkModule.class, InteractorModule.class, DbModule.class})
+@Component(modules = {UIModule.class, NetworkModule.class, InteractorModule.class})
 public interface PlScoresApplicationComponent {
 
     void inject(MainActivity mainActivity);

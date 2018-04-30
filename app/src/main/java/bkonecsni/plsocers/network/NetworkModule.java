@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class NetworkModule {
 
-    private static final String ENDPOINT_ADDRESS = "http://api.football-data.org/v1";
+    private static final String ENDPOINT_ADDRESS = "http://api.football-data.org/v1/";
 
     @Provides
     @Singleton

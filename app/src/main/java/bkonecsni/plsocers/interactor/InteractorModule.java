@@ -9,6 +9,8 @@ import dagger.Provides;
 @Module
 public class InteractorModule {
 
+    public static final long COMPETITION_ID = 445L;
+
     @Provides
     public LiveMatchesInteractor provideLiveMatchesInteractor() {
         return new LiveMatchesInteractor();
