@@ -10,6 +10,7 @@ import dagger.Provides;
 public class InteractorModule {
 
     public static final long COMPETITION_ID = 445L;
+    public static final String FILTER_FOR_NEXT_7_DAYS = "n7";
 
     @Provides
     public LiveMatchesInteractor provideLiveMatchesInteractor() {

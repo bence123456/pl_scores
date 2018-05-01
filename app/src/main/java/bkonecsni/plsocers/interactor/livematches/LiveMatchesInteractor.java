@@ -14,6 +14,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 import static bkonecsni.plsocers.interactor.InteractorModule.COMPETITION_ID;
+import static bkonecsni.plsocers.interactor.InteractorModule.FILTER_FOR_NEXT_7_DAYS;
 
 public class LiveMatchesInteractor {
 
@@ -29,15 +30,15 @@ public class LiveMatchesInteractor {
         Thread thread = new Thread(new Runnable(){
             public void run() {
                 try {
-//                    Call<Fixtures> fixturesCall = footballDataApi.listFixtures(COMPETITION_ID);
-//                    Response<Fixtures> execute = fixturesCall.execute();
-//                    Fixtures body = execute.body();
-//                    List<Fixture> fixtureList = body.getFixtures();
+                    Call<Fixtures> fixturesCall = footballDataApi.listFixtures(COMPETITION_ID, FILTER_FOR_NEXT_7_DAYS);
+                    Response<Fixtures> execute = fixturesCall.execute();
+                    Fixtures body = execute.body();
+                    List<Fixture> fixtureList = body.getFixtures();
 
-                    Call<Table> tableCall = footballDataApi.getLeagueTable(COMPETITION_ID);
-                    Response<Table> execute2 = tableCall.execute();
-                    Table body2 = execute2.body();
-                    List<Team> teamList = body2.getStanding();
+//                    Call<Table> tableCall = footballDataApi.getLeagueTable(COMPETITION_ID);
+//                    Response<Table> execute2 = tableCall.execute();
+//                    Table body2 = execute2.body();
+//                    List<Team> teamList = body2.getStanding();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
