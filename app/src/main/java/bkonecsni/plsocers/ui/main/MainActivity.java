@@ -3,6 +3,8 @@ package bkonecsni.plsocers.ui.main;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import javax.inject.Inject;
 
@@ -21,13 +23,20 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
         setContentView(R.layout.activity_main);
 
         PlScoresApplication.injector.inject(this);
+
+        Button btnShowLiveMatches = (Button) findViewById(R.id.btnShowLiveMatches);
+        btnShowLiveMatches.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.startLiveMatchesActivity();
+            }
+        });
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         mainPresenter.attachScreen(this);
-        mainPresenter.startLiveMatchesActivity();
     }
 
     @Override

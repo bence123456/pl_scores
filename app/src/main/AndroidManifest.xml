@@ -3,30 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="bkonecsni.plsocers">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".PlScoresApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name="bkonecsni.plsocers.PlScoresApplication"
         tools:replace="android:icon">
-
-        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="bkonecsni.plscores.model.db" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="bkonecsni.plscores.model.db" />
 
         <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.livematches.LiveMatchesActivity"></activity>
-        <activity android:name=".ui.livetable.LiveTableActivity"></activity>
-        <activity android:name=".ui.favouritematches.FavouriteMatchesActivity"></activity>
+        <activity android:name=".ui.livematches.LiveMatchesActivity" />
+        <activity android:name=".ui.livetable.LiveTableActivity" />
+        <activity android:name=".ui.favouritematches.FavouriteMatchesActivity" />
+        <activity
+            android:name=".ui.MenuActivity"
+            android:label="@string/title_activity_menu"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
