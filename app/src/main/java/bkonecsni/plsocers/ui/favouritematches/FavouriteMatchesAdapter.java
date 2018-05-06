@@ -1,4 +1,4 @@
-package bkonecsni.plsocers.ui.livematches;
+package bkonecsni.plsocers.ui.favouritematches;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -10,42 +10,41 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import bkonecsni.plsocers.R;
-import bkonecsni.plsocers.model.api.Fixture;
-import bkonecsni.plsocers.model.api.Result;
+import bkonecsni.plsocers.model.db.FavouriteMatch;
 
-public class LiveMatchesAdapter extends RecyclerView.Adapter<LiveMatchesAdapter.ViewHolder> {
+public class FavouriteMatchesAdapter extends RecyclerView.Adapter<FavouriteMatchesAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<Fixture> fixtureList;
+    private ArrayList<FavouriteMatch> favouriteMatchList;
 
-    public LiveMatchesAdapter(Context context, ArrayList<Fixture> fixtureList) {
+    public FavouriteMatchesAdapter(Context context, ArrayList<FavouriteMatch> favouriteMatchList) {
         this.context = context;
-        this.fixtureList = fixtureList;
+        this.favouriteMatchList = favouriteMatchList;
     }
 
-    public LiveMatchesAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public FavouriteMatchesAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.match_row, viewGroup, false);
-        return new LiveMatchesAdapter.ViewHolder(itemView);
+        return new FavouriteMatchesAdapter.ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(LiveMatchesAdapter.ViewHolder holder, int position) {
-        Fixture fixture = fixtureList.get(position);
+    public void onBindViewHolder(FavouriteMatchesAdapter.ViewHolder holder, int position) {
+        FavouriteMatch favouriteMatch = favouriteMatchList.get(position);
 
-        String[] dateAndTime = fixture.getDate().split("T");
+        String[] dateAndTime = favouriteMatch.getDate().split("T");
         holder.tvDate.setText(dateAndTime[0]);
         holder.tvTime.setText(dateAndTime[1].substring(0,dateAndTime[1].lastIndexOf(":")));
-        holder.tvHomeTeam.setText(fixture.getHomeTeamName());
-        holder.tvAwayTeam.setText(fixture.getAwayTeamName());
 
-        Result result = fixture.getResult();
-        holder.tvHomeTeamGoals.setText(result == null ? "-" : result.getGoalsHomeTeam());
-        holder.tvAwayTeamGoals.setText(result == null ? "-" : result.getGoalsAwayTeam());
+        holder.tvDate.setText(favouriteMatch.getDate());
+        holder.tvHomeTeam.setText(favouriteMatch.getHomeTeamName());
+        holder.tvAwayTeam.setText(favouriteMatch.getAwayTeamName());
+        holder.tvHomeTeamGoals.setText(String.valueOf(favouriteMatch.getHomeTeamGoals()));
+        holder.tvAwayTeamGoals.setText(String.valueOf(favouriteMatch.getAwayTeamGoals()));
     }
 
     @Override
     public int getItemCount() {
-        return fixtureList.size();
+        return favouriteMatchList.size();
     }
 
     protected static class ViewHolder extends RecyclerView.ViewHolder {

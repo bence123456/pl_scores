@@ -60,6 +60,8 @@ public class LiveMatchesActivity extends DrawerActivity implements LiveMatchesSc
                 ));
             }
         });
+
+
     }
 
     @Override
