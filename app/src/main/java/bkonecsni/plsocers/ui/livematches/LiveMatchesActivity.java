@@ -1,7 +1,6 @@
 package bkonecsni.plsocers.ui.livematches;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -10,8 +9,9 @@ import javax.inject.Inject;
 import bkonecsni.plsocers.PlScoresApplication;
 import bkonecsni.plsocers.R;
 import bkonecsni.plsocers.model.db.FavouriteMatch;
+import bkonecsni.plsocers.ui.menu.DrawerActivity;
 
-public class LiveMatchesActivity extends AppCompatActivity implements LiveMatchesScreen {
+public class LiveMatchesActivity extends DrawerActivity implements LiveMatchesScreen {
 
     @Inject
     LiveMatchesPresenter liveMatchesPresenter;
@@ -19,7 +19,7 @@ public class LiveMatchesActivity extends AppCompatActivity implements LiveMatche
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_livematches);
+        addView(R.layout.activity_livematches, R.string.actual_matches);
 
         PlScoresApplication.injector.inject(this);
 

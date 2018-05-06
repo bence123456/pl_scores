@@ -1,16 +1,18 @@
 <resources>
-    <string name="app_name">plsocers</string>
+    <string name="app_name">PL Scores</string>
     <string name="button_show_live_matches">See actual results</string>
     <string name="welcome_text">Welcome in the Premier League Scores!
         You can follow every round of the famous English
         Premier League including live results and table.
         You can also save your favourite matches.</string>
     <string name="refresh_matches">refresh matches</string>
-    <string name="title_activity_menu">MenuActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+    <string name="actual_matches">Actual matches</string>
+    <string name="favourite_matches">Favourite matches</string>
+    <string name="standing">Standing</string>
+    <string name="home">Home</string>
+    <string name="welcome">Welcome</string>
 </resources>

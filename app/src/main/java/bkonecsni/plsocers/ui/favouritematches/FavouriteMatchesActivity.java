@@ -1,14 +1,14 @@
 package bkonecsni.plsocers.ui.favouritematches;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import javax.inject.Inject;
 
 import bkonecsni.plsocers.PlScoresApplication;
 import bkonecsni.plsocers.R;
+import bkonecsni.plsocers.ui.menu.DrawerActivity;
 
-public class FavouriteMatchesActivity extends AppCompatActivity implements FavouriteMatchesScreen{
+public class FavouriteMatchesActivity extends DrawerActivity implements FavouriteMatchesScreen{
 
     @Inject
     FavouriteMatchesPresenter favouriteMatchesPresenter;
@@ -16,7 +16,7 @@ public class FavouriteMatchesActivity extends AppCompatActivity implements Favou
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favouritematches);
+        addView(R.layout.activity_favouritematches, R.string.favourite_matches);
 
         PlScoresApplication.injector.inject(this);
     }

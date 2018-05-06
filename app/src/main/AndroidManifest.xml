@@ -28,10 +28,6 @@
         <activity android:name=".ui.livematches.LiveMatchesActivity" />
         <activity android:name=".ui.livetable.LiveTableActivity" />
         <activity android:name=".ui.favouritematches.FavouriteMatchesActivity" />
-        <activity
-            android:name=".ui.MenuActivity"
-            android:label="@string/title_activity_menu"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

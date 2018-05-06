@@ -1,14 +1,14 @@
 package bkonecsni.plsocers.ui.livetable;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import javax.inject.Inject;
 
 import bkonecsni.plsocers.PlScoresApplication;
 import bkonecsni.plsocers.R;
+import bkonecsni.plsocers.ui.menu.DrawerActivity;
 
-public class LiveTableActivity extends AppCompatActivity implements LiveTableScreen {
+public class LiveTableActivity extends DrawerActivity implements LiveTableScreen {
 
     @Inject
     LiveTablePresenter liveTablePresenter;
@@ -16,7 +16,7 @@ public class LiveTableActivity extends AppCompatActivity implements LiveTableScr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_livetable);
+        addView(R.layout.activity_livetable, R.string.standing);
 
         PlScoresApplication.injector.inject(this);
     }

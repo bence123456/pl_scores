@@ -1,7 +1,6 @@
 package bkonecsni.plsocers.ui.main;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,8 +10,9 @@ import javax.inject.Inject;
 import bkonecsni.plsocers.PlScoresApplication;
 import bkonecsni.plsocers.R;
 import bkonecsni.plsocers.ui.livematches.LiveMatchesActivity;
+import bkonecsni.plsocers.ui.menu.DrawerActivity;
 
-public class MainActivity extends AppCompatActivity implements MainScreen {
+public class MainActivity extends DrawerActivity implements MainScreen {
 
     @Inject
     MainPresenter mainPresenter;
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        addView(R.layout.activity_main, R.string.welcome);
 
         PlScoresApplication.injector.inject(this);
 
@@ -50,5 +50,4 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
         Intent intent = new Intent(MainActivity.this, LiveMatchesActivity.class);
         startActivity(intent);
     }
-
 }
