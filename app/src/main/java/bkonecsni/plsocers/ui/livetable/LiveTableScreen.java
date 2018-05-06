@@ -7,5 +7,5 @@ import bkonecsni.plsocers.ui.common.CommonScreen;
 
 public interface LiveTableScreen extends CommonScreen {
 
-    void showLiveTable(List<Team> standing);
+    void showLiveTable(List<Team> teams);
 }
