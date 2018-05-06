@@ -49,16 +49,7 @@ public class LiveTableActivity extends DrawerActivity implements LiveTableScreen
         swipeRefreshLayoutTable.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                //                liveTablePresenter.refreshTable();
-                showLiveTable(Arrays.asList(
-                        createTeam("Manchester City", 36, 30, 4, 2, 94),
-                        createTeam("Manchester United", 36, 24, 5, 7, 77),
-                        createTeam("LiverPool FC", 36, 20, 12, 5, 72),
-                        createTeam("Totttenham Hotspur FC", 36, 21, 8, 7, 71),
-                        createTeam("Chelsea FC", 36, 21, 6, 9, 69),
-                        createTeam("Arsenal", 36, 18, 6, 12, 60),
-                        createTeam("West Bromwich Albion FC", 36, 14, 12, 11, 54)
-                ));
+                liveTablePresenter.refreshTable();
             }
         });
     }
@@ -107,6 +98,7 @@ public class LiveTableActivity extends DrawerActivity implements LiveTableScreen
         if (swipeRefreshLayoutTable != null) {
             swipeRefreshLayoutTable.setRefreshing(false);
         }
+
         Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
     }
 
