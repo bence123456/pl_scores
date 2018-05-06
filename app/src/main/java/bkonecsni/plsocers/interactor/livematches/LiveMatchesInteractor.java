@@ -1,14 +1,10 @@
 package bkonecsni.plsocers.interactor.livematches;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import bkonecsni.plsocers.PlScoresApplication;
-import bkonecsni.plsocers.model.api.Fixture;
+import bkonecsni.plsocers.interactor.common.CommonNetworkInteractor;
 import bkonecsni.plsocers.model.api.Fixtures;
-import bkonecsni.plsocers.model.api.Table;
-import bkonecsni.plsocers.model.api.Team;
 import bkonecsni.plsocers.network.FootballDataApi;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -16,7 +12,7 @@ import retrofit2.Response;
 import static bkonecsni.plsocers.interactor.InteractorModule.COMPETITION_ID;
 import static bkonecsni.plsocers.interactor.InteractorModule.FILTER_FOR_NEXT_7_DAYS;
 
-public class LiveMatchesInteractor {
+public class LiveMatchesInteractor extends CommonNetworkInteractor {
 
     @Inject
     FootballDataApi footballDataApi;
@@ -26,25 +22,17 @@ public class LiveMatchesInteractor {
     }
 
     public void getLiveMatches() {
+        GetLiveMatchesEvent event = new GetLiveMatchesEvent();
 
-        Thread thread = new Thread(new Runnable(){
-            public void run() {
-                try {
-                    Call<Fixtures> fixturesCall = footballDataApi.listFixtures(COMPETITION_ID, FILTER_FOR_NEXT_7_DAYS);
-                    Response<Fixtures> execute = fixturesCall.execute();
-                    Fixtures body = execute.body();
-                    List<Fixture> fixtureList = body.getFixtures();
+        try {
+            Call<Fixtures> fixturesCall = footballDataApi.listFixtures(COMPETITION_ID, FILTER_FOR_NEXT_7_DAYS);
+            Response<Fixtures> response = fixturesCall.execute();
 
-//                    Call<Table> tableCall = footballDataApi.getLeagueTable(COMPETITION_ID);
-//                    Response<Table> execute2 = tableCall.execute();
-//                    Table body2 = execute2.body();
-//                    List<Team> teamList = body2.getStanding();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        thread.start();
+            throwExceptionIfNecessary(response);
+            creaateAndPostEvent(event, response, response.body().getFixtures());
+        } catch (Exception e) {
+            createAndPostErrorEvent(event, e);
+        }
     }
+
 }

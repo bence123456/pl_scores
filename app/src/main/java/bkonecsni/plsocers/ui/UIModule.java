@@ -2,8 +2,12 @@ package bkonecsni.plsocers.ui;
 
 import android.content.Context;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 import javax.inject.Singleton;
 
+import bkonecsni.plsocers.di.Network;
 import bkonecsni.plsocers.ui.favouritematches.FavouriteMatchesPresenter;
 import bkonecsni.plsocers.ui.livematches.LiveMatchesPresenter;
 import bkonecsni.plsocers.ui.livetable.LiveTablePresenter;
@@ -48,4 +52,10 @@ public class UIModule {
         return new FavouriteMatchesPresenter();
     }
 
+    @Provides
+    @Singleton
+    @Network
+    public Executor provideNetworkExecutor() {
+        return Executors.newFixedThreadPool(1);
+    }
 }

@@ -5,7 +5,9 @@
         You can follow every round of the famous English
         Premier League including live results and table.
         You can also save your favourite matches.</string>
-    <string name="refresh_matches">refresh matches</string>
+
+    <string name="refresh_matches">Refresh matches</string>
+    <string name="refresh_tables">Refresh table</string>
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>

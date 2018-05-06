@@ -20,11 +20,6 @@ public class FavouriteMatchesPresenter extends Presenter<FavouriteMatchesScreen>
         PlScoresApplication.injector.inject(this);
     }
 
-    @Override
-    public void detachScreen() {
-        super.detachScreen();
-    }
-
     public List<FavouriteMatch> listFavouriteMatches() {
         return favouriteMatchesInteractor.getFavouriteMatches();
     }

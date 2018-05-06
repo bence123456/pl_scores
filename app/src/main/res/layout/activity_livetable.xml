@@ -14,4 +14,14 @@
         android:textAlignment="center"
         android:text="LIVE TABLE" />
 
+    <Button
+        android:id="@+id/btnRefreshTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:textColor="#FCF5F5"
+        android:background="#35BBC0"
+        android:text="@string/refresh_tables"/>
+
 </LinearLayout>

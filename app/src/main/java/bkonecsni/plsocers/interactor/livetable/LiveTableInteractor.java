@@ -3,11 +3,15 @@ package bkonecsni.plsocers.interactor.livetable;
 import javax.inject.Inject;
 
 import bkonecsni.plsocers.PlScoresApplication;
+import bkonecsni.plsocers.interactor.common.CommonNetworkInteractor;
+import bkonecsni.plsocers.model.api.Table;
 import bkonecsni.plsocers.network.FootballDataApi;
+import retrofit2.Call;
+import retrofit2.Response;
 
 import static bkonecsni.plsocers.interactor.InteractorModule.COMPETITION_ID;
 
-public class LiveTableInteractor {
+public class LiveTableInteractor extends CommonNetworkInteractor {
 
     @Inject
     FootballDataApi footballDataApi;
@@ -17,6 +21,16 @@ public class LiveTableInteractor {
     }
 
     public void getLiveTable() {
-        footballDataApi.getLeagueTable(COMPETITION_ID);
+        GetLiveTableEvent event = new GetLiveTableEvent();
+
+        try {
+            Call<Table> tableCall = footballDataApi.getLeagueTable(COMPETITION_ID);
+            Response<Table> response = tableCall.execute();
+
+            throwExceptionIfNecessary(response);
+            creaateAndPostEvent(event, response, response.body().getStanding());
+        } catch (Exception e) {
+            createAndPostErrorEvent(event, e);
+        }
     }
 }

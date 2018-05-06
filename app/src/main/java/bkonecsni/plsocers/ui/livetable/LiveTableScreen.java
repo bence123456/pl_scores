@@ -1,6 +1,11 @@
 package bkonecsni.plsocers.ui.livetable;
 
-public interface LiveTableScreen {
+import java.util.List;
 
-    void showLiveTable();
+import bkonecsni.plsocers.model.api.Team;
+import bkonecsni.plsocers.ui.common.CommonScreen;
+
+public interface LiveTableScreen extends CommonScreen {
+
+    void showLiveTable(List<Team> standing);
 }

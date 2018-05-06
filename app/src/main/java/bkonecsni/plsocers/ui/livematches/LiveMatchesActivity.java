@@ -3,11 +3,15 @@ package bkonecsni.plsocers.ui.livematches;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 import bkonecsni.plsocers.PlScoresApplication;
 import bkonecsni.plsocers.R;
+import bkonecsni.plsocers.model.api.Fixture;
 import bkonecsni.plsocers.model.db.FavouriteMatch;
 import bkonecsni.plsocers.ui.menu.DrawerActivity;
 
@@ -23,11 +27,11 @@ public class LiveMatchesActivity extends DrawerActivity implements LiveMatchesSc
 
         PlScoresApplication.injector.inject(this);
 
-        Button refreshMatches = (Button) findViewById(R.id.btnRefreshatches);
+        Button refreshMatches = (Button) findViewById(R.id.btnRefreshMatches);
         refreshMatches.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showLiveMatches();
+                liveMatchesPresenter.refreshMatches();
             }
         });
     }
@@ -45,13 +49,18 @@ public class LiveMatchesActivity extends DrawerActivity implements LiveMatchesSc
     }
 
     @Override
-    public void showLiveMatches() {
-        liveMatchesPresenter.refreshMatches();
+    public void showLiveMatches(List<Fixture> fixtures) {
+//        liveMatchesPresenter.refreshMatches();
     }
 
     @Override
     public void addMatchToFavourites(FavouriteMatch favouriteMatch) {
         liveMatchesPresenter.addFavouriteMatch(favouriteMatch);
+    }
+
+    @Override
+    public void showNetworkError(String errorMsg) {
+        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
     }
 
 }
