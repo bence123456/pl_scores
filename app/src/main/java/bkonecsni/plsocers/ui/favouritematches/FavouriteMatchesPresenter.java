@@ -1,6 +1,6 @@
 package bkonecsni.plsocers.ui.favouritematches;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -20,8 +20,12 @@ public class FavouriteMatchesPresenter extends Presenter<FavouriteMatchesScreen>
         PlScoresApplication.injector.inject(this);
     }
 
-    public List<FavouriteMatch> listFavouriteMatches() {
-        return favouriteMatchesInteractor.getFavouriteMatches();
+    public void showFavouriteMatches() {
+        screen.showFavouriteMatches(getFavouriteMatches());
+    }
+
+    public ArrayList<FavouriteMatch> getFavouriteMatches() {
+        return (ArrayList<FavouriteMatch>) favouriteMatchesInteractor.getFavouriteMatches();
     }
 
     public void removeFavouriteMatch(long id) {

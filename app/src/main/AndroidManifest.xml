@@ -14,9 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <meta-data
-            android:name="DOMAIN_PACKAGE_NAME"
-            android:value="bkonecsni.plscores.model.db" />
 
         <activity android:name=".ui.main.MainActivity">
             <intent-filter>

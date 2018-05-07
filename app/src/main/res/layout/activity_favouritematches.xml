@@ -6,12 +6,9 @@
     tools:context="bkonecsni.plsocers.ui.main.MainActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:text="FAV MATCHES" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewFavouriteMatches"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
 </LinearLayout>

@@ -69,16 +69,7 @@ public class LiveTableActivity extends DrawerActivity implements LiveTableScreen
     @Override
     public void onResume() {
         super.onResume();
-//        liveTablePresenter.refreshTable();
-        showLiveTable(Arrays.asList(
-                createTeam("Manchester City", 36, 30, 4, 2, 94),
-                createTeam("Manchester United", 36, 24, 5, 7, 77),
-                createTeam("LiverPool FC", 36, 20, 12, 5, 72),
-                createTeam("Totttenham Hotspur FC", 36, 21, 8, 7, 71),
-                createTeam("Csicska FC", 36, 21, 6, 9, 69),
-                createTeam("Arsenal FC", 36, 18, 6, 12, 60),
-                createTeam("West Bromwich Albion FC", 36, 14, 12, 11, 54)
-        ));
+        liveTablePresenter.refreshTable();
     }
 
 
@@ -100,20 +91,5 @@ public class LiveTableActivity extends DrawerActivity implements LiveTableScreen
         }
 
         Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
-    }
-
-    private Team createTeam(String teamName, Integer played, Integer wins, Integer draws, Integer losses, Integer points) {
-        Team team = new Team();
-
-        team.setTeamName(teamName);
-        team.setPlayedGames(played);
-        team.setWins(wins);
-        team.setDraws(draws);
-        team.setLosses(losses);
-        team.setGoals(86);
-        team.setGoalsAgainst(61);
-        team.setPoints(points);
-
-        return team;
     }
 }

@@ -3,6 +3,7 @@ package bkonecsni.plsocers.ui.livematches;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.List;
 import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
@@ -44,6 +45,10 @@ public class LiveMatchesPresenter extends CommonPresenter<LiveMatchesScreen> {
 
     public void addFavouriteMatch(FavouriteMatch favouriteMatch) {
         favouriteMatchesInteractor.createFavouriteMatch(favouriteMatch);
+    }
+
+    public List<FavouriteMatch> getFavouriteMatches() {
+        return favouriteMatchesInteractor.getFavouriteMatches();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

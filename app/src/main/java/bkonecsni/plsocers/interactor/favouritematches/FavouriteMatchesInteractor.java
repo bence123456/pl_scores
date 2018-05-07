@@ -1,5 +1,7 @@
 package bkonecsni.plsocers.interactor.favouritematches;
 
+import com.google.common.collect.Lists;
+
 import java.util.List;
 
 import bkonecsni.plsocers.PlScoresApplication;
@@ -12,7 +14,7 @@ public class FavouriteMatchesInteractor {
     }
 
     public List<FavouriteMatch> getFavouriteMatches() {
-        return (List<FavouriteMatch>) FavouriteMatch.findAll(FavouriteMatch.class);
+        return  Lists.newArrayList( FavouriteMatch.findAll(FavouriteMatch.class));
     }
 
     public void createFavouriteMatch(FavouriteMatch favouriteMatch) {

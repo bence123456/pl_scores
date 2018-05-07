@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import bkonecsni.plsocers.model.db.FavouriteMatch;
 
 public class FavouriteMatchesAdapter extends RecyclerView.Adapter<FavouriteMatchesAdapter.ViewHolder> {
 
+    private static FavouriteMatchesAdapter.ClickListener clickListener;
     private Context context;
     private ArrayList<FavouriteMatch> favouriteMatchList;
 
@@ -35,11 +37,12 @@ public class FavouriteMatchesAdapter extends RecyclerView.Adapter<FavouriteMatch
         holder.tvDate.setText(dateAndTime[0]);
         holder.tvTime.setText(dateAndTime[1].substring(0,dateAndTime[1].lastIndexOf(":")));
 
-        holder.tvDate.setText(favouriteMatch.getDate());
         holder.tvHomeTeam.setText(favouriteMatch.getHomeTeamName());
         holder.tvAwayTeam.setText(favouriteMatch.getAwayTeamName());
-        holder.tvHomeTeamGoals.setText(String.valueOf(favouriteMatch.getHomeTeamGoals()));
-        holder.tvAwayTeamGoals.setText(String.valueOf(favouriteMatch.getAwayTeamGoals()));
+        holder.tvHomeTeamGoals.setText(favouriteMatch.getHomeTeamGoals());
+        holder.tvAwayTeamGoals.setText(favouriteMatch.getAwayTeamGoals());
+
+        holder.favIcon.setImageResource(R.drawable.star_checked);
     }
 
     @Override
@@ -47,13 +50,14 @@ public class FavouriteMatchesAdapter extends RecyclerView.Adapter<FavouriteMatch
         return favouriteMatchList.size();
     }
 
-    protected static class ViewHolder extends RecyclerView.ViewHolder {
+    protected static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvDate;
         TextView tvTime;
         TextView tvHomeTeam;
         TextView tvAwayTeam;
         TextView tvHomeTeamGoals;
         TextView tvAwayTeamGoals;
+        ImageView favIcon;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -63,6 +67,24 @@ public class FavouriteMatchesAdapter extends RecyclerView.Adapter<FavouriteMatch
             tvAwayTeam = (TextView) itemView.findViewById(R.id.tvAwayTeam);
             tvHomeTeamGoals = (TextView) itemView.findViewById(R.id.tvHomeTeamGoals);
             tvAwayTeamGoals = (TextView) itemView.findViewById(R.id.tvAwayTeamGoals);
+            favIcon = (ImageView) itemView.findViewById(R.id.favIcon);
+            favIcon.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            clickListener.onItemClick(getAdapterPosition(), v);
+        }
+
     }
+
+    public void setOnItemClickListener(ClickListener clickListener) {
+        FavouriteMatchesAdapter.clickListener = clickListener;
+    }
+
+    public interface ClickListener {
+        void onItemClick(int position, View v);
+
+    }
+
 }

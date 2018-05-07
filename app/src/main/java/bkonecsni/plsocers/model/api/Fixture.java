@@ -28,6 +28,8 @@ public class Fixture   {
     @SerializedName("result")
     private Result result = null;
 
+    private boolean isFavourite = false;
+
     @ApiModelProperty(required = true, value = "")
     public String getDate() {
         return date;
@@ -77,6 +79,13 @@ public class Fixture   {
         this.result = result;
     }
 
+    public boolean isFavourite() {
+        return isFavourite;
+    }
+    public void setFavourite(boolean favourite) {
+        isFavourite = favourite;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -93,12 +102,13 @@ public class Fixture   {
                 Objects.equals(matchday, fixture.matchday) &&
                 Objects.equals(homeTeamName, fixture.homeTeamName) &&
                 Objects.equals(awayTeamName, fixture.awayTeamName) &&
-                Objects.equals(result, fixture.result);
+                Objects.equals(result, fixture.result) &&
+                Objects.equals(isFavourite, fixture.isFavourite);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, status, matchday, homeTeamName, awayTeamName, result);
+        return Objects.hash(date, status, matchday, homeTeamName, awayTeamName, result, isFavourite);
     }
 
     @Override
@@ -112,6 +122,7 @@ public class Fixture   {
         sb.append("    homeTeamName: ").append(toIndentedString(homeTeamName)).append("\n");
         sb.append("    awayTeamName: ").append(toIndentedString(awayTeamName)).append("\n");
         sb.append("    result: ").append(toIndentedString(result)).append("\n");
+        sb.append("    isFavourite: ").append(toIndentedString(isFavourite)).append("\n");
         sb.append("}");
         return sb.toString();
     }

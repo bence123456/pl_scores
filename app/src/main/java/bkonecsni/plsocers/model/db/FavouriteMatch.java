@@ -2,22 +2,22 @@ package bkonecsni.plsocers.model.db;
 
 import com.orm.SugarRecord;
 
-public class FavouriteMatch extends SugarRecord<FavouriteMatch> {
+public class FavouriteMatch extends SugarRecord {
 
     private String date;
 
     private String homeTeamName;
 
-    private int homeTeamGoals;
+    private String homeTeamGoals;
 
     private String awayTeamName;
 
-    private int awayTeamGoals;
+    private String awayTeamGoals;
 
     public FavouriteMatch() {
     }
 
-    public FavouriteMatch(String date, String homeTeamName, int homeTeamGoals, String awayTeamName, int awayTeamGoals) {
+    public FavouriteMatch(String date, String homeTeamName, String homeTeamGoals, String awayTeamName, String awayTeamGoals) {
         this.date = date;
         this.homeTeamName = homeTeamName;
         this.homeTeamGoals = homeTeamGoals;
@@ -41,11 +41,11 @@ public class FavouriteMatch extends SugarRecord<FavouriteMatch> {
         this.homeTeamName = homeTeamName;
     }
 
-    public int getHomeTeamGoals() {
+    public String getHomeTeamGoals() {
         return homeTeamGoals;
     }
 
-    public void setHomeTeamGoals(int homeTeamGoals) {
+    public void setHomeTeamGoals(String homeTeamGoals) {
         this.homeTeamGoals = homeTeamGoals;
     }
 
@@ -57,11 +57,11 @@ public class FavouriteMatch extends SugarRecord<FavouriteMatch> {
         this.awayTeamName = awayTeamName;
     }
 
-    public int getAwayTeamGoals() {
+    public String getAwayTeamGoals() {
         return awayTeamGoals;
     }
 
-    public void setAwayTeamGoals(int awayTeamGoals) {
+    public void setAwayTeamGoals(String awayTeamGoals) {
         this.awayTeamGoals = awayTeamGoals;
     }
 }
