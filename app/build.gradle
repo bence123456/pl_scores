@@ -40,7 +40,7 @@ dependencies {
     implementation 'com.github.satyan:sugar:1.5'
 
     implementation 'org.greenrobot:eventbus:3.1.1'
-    implementation group: 'com.google.guava', name: 'guava', version: 'r05'
+    implementation group: 'com.google.guava', name: 'guava', version: 'r07'
 
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
